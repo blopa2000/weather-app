@@ -1,3 +1,296 @@
-:host{
-  color: #fff
+:host {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    @media (max-width: 1200px) {
+      align-items: flex-start;
+    }
+    @media (max-width: 600px) {
+      display: block;
+    }
+    .card {
+      background: #00000026;
+      backdrop-filter: blur(15px);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+
+      &__search {
+        position: absolute;
+        right: 30px;
+        top: 33px;
+        display: flex;
+        align-items: baseline;
+        &__input {
+          align-items: center;
+          background: #00000026;
+          border: 1px solid #0090f8;
+          border-radius: 20px;
+          display: flex;
+          height: 2em;
+          margin-bottom: 0.5em;
+          padding: 0.5em;
+          width: 20em;
+          input {
+            background: none;
+            border: 0;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 24px;
+            caret-color: #0090f8;
+            letter-spacing: 2px;
+            color: #fff;
+            width: 90%;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        &__btn {
+          background: linear-gradient(301deg, #0090f8, #00d6e3);
+          color: #fff;
+          padding: 10px;
+          border: 0;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-left: 10px;
+          &:hover {
+            background: linear-gradient(-301deg, #0090f8, #00d6e3);
+          }
+          .ng-fa-icon {
+            font-weight: bold;
+            font-size: 24px;
+          }
+        }
+        @media (max-width: 1200px) {
+          position: initial;
+          margin-left: auto;
+          margin-buttom: 22px;
+          margin-bottom: 20px;
+        }
+      }
+
+      &__infoWeather {
+        background: #00000026;
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 20px;
+        &__img {
+          width: 18rem;
+          filter: drop-shadow(0px 0px 30px #0084ff);
+          position: absolute;
+          top: -95px;
+          left: -107px;
+          @media (max-width: 1200px) {
+            width: 15rem;
+            top: -28px;
+            left: -33px;
+          }
+          @media (max-width: 600px) {
+            width: 11rem;
+            top: -26px;
+            left: -9px;
+          }
+        }
+        &__btn {
+          background: linear-gradient(301deg, #0090f8, #00d6e3);
+          color: #fff;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: bold;
+          font-size: 32px;
+          padding: 10px;
+          border: 0;
+          border-radius: 50%;
+          position: absolute;
+          top: -16px;
+          right: -21px;
+          cursor: pointer;
+          transition: 1s background ease-in-out;
+          &:hover {
+            background: linear-gradient(-301deg, #0090f8, #00d6e3);
+          }
+          @media (max-width: 600px) {
+            top: -20px;
+            right: 0px;
+          }
+        }
+        &__title {
+          font-size: 5rem;
+          text-align: end;
+          @extend %degraded;
+          @media (max-width: 450px) {
+            font-size: 3rem;
+            margin-top: 15px;
+          }
+        }
+        &__sup {
+          font-size: 1.5rem;
+          text-align: end;
+          opacity: 0.9;
+        }
+        &__type {
+          font-size: 2.5rem;
+          text-align: center;
+          @extend %degraded;
+          @media (max-width: 450px) {
+            font-size: 1.5rem;
+            margin: 5px 0;
+          }
+        }
+        &__main {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 10px;
+          .internal__card {
+            background: linear-gradient(301deg, #0090f8, #00d6e3);
+            text-align: center;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 20px;
+            .ng-fa-icon {
+              font-size: 30px;
+              opacity: 0.7;
+            }
+            p {
+              opacity: 0.8;
+            }
+          }
+          @media (max-width: 470px) {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+          }
+        }
+        @media (max-width: 600px) {
+          margin-bottom: 20px;
+        }
+      }
+
+      &__infoweek {
+        margin-top: 65px;
+        @media (max-width: 1200px) {
+          margin: 0;
+        }
+        .card__country {
+          background: #00000026;
+          backdrop-filter: blur(15px);
+          border-radius: 20px;
+          padding: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          &__info {
+            flex: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            &__main {
+              h6 {
+                font-size: 20px;
+              }
+              .sup {
+                opacity: 0.5;
+              }
+              .date {
+                font-size: 15px;
+              }
+            }
+
+            &__sunrise-sunset {
+              display: flex;
+              margin-top: 10px;
+              .info {
+                text-align: center;
+                margin-right: 20px;
+                font-size: 15px;
+                span {
+                  opacity: 0.5;
+                }
+              }
+            }
+          }
+          &__flag {
+            width: 30%;
+            text-align: end;
+            .code {
+              font-size: 30px;
+              @extend %degraded;
+            }
+            img {
+              width: 100px;
+              border-radius: 10px;
+            }
+            @media (max-width: 450px) {
+              width: 100%;
+            }
+          }
+        }
+        .dayweek {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          position: relative;
+          .day {
+            background: #00000026;
+            backdrop-filter: blur(15px);
+            width: 70px;
+            margin: 10px 5px;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-items: center;
+            justify-content: space-between;
+            h6 {
+              font-size: 20px;
+              @extend %degraded;
+            }
+            img {
+              width: 50px;
+              filter: drop-shadow(0px 0px 13px #fbff01);
+            }
+            .maxMin {
+              span {
+                opacity: 0.5;
+              }
+            }
+          }
+          .cloud {
+            position: absolute;
+            width: 150px;
+              bottom: -100px;
+              right: -115px;
+            @media (max-width: 1200px) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(1, 1fr);
+        margin: 10px 0px;
+      }
+      @media (max-width: 600px) {
+        border-radius: 0px;
+        margin: 0;
+        padding: 10px;
+        display: block;
+      }
+    }
+  }
+}
+
+%degraded {
+  background: linear-gradient(white, #3d3d3db5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

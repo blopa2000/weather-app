@@ -1,6 +1,156 @@
 <div class="container">
   <div class="card">
-    <div class="card__infoWeather"></div>
-    <div class="card__infoWeather__country"></div>
+    <div class="card__search">
+      <div class="card__search__input">
+        <input type="text" placeholder="Country or city" />
+      </div>
+      <button class="card__search__btn">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+      </button>
+    </div>
+    <div class="card__infoWeather">
+      <img
+        class="card__infoWeather__img"
+        src="assets/cloud/5.png"
+        alt="clouds"
+      />
+      <button class="card__infoWeather__btn">°F</button>
+      <h1 class="card__infoWeather__title">19°C</h1>
+      <p class="card__infoWeather__sup">Feels like 32 °C</p>
+      <h2 class="card__infoWeather__type">Broken clouds</h2>
+      <div class="card__infoWeather__main">
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faDroplet"></fa-icon>
+          <p>Humidity</p>
+          <span>90°C</span>
+        </div>
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faWind"></fa-icon>
+          <p>Wind</p>
+          <span>11 km/h</span>
+        </div>
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faChevronUp"></fa-icon>
+          <p>High</p>
+          <span>19 °C</span>
+        </div>
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faEye"></fa-icon>
+          <p>Visibilidad</p>
+          <span>10 km</span>
+        </div>
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faArrowsDownToLine"></fa-icon>
+          <p>Presuure</p>
+          <span>100 mbar</span>
+        </div>
+        <div class="internal__card">
+          <!-- ICON -->
+          <fa-icon [icon]="faChevronDown"></fa-icon>
+          <p>Low</p>
+          <span>15 °C</span>
+        </div>
+      </div>
+    </div>
+    <div class="card__infoweek">
+      <div class="card__country">
+        <div class="card__country__info">
+          <div class="card__country__info__main">
+            <h6>Rionegro</h6>
+            <p class="sup">Tiempo Actual</p>
+            <p class="date">16 sep,friday 10:18 PM</p>
+          </div>
+
+          <div class="card__country__info__sunrise-sunset">
+            <div class="info">
+              <p>05:51 AM</p>
+              <span>Sunrise</span>
+            </div>
+            <div class="info">
+              <p>06:00 PM</p>
+              <span>Sunset</span>
+            </div>
+            <div class="info">
+              <p>75 %</p>
+              <span>Clouds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card__country__flag">
+          <p class="code">CO</p>
+          <img src="assets/co.png" alt="" />
+        </div>
+      </div>
+      <!-- week -->
+      <div class="dayweek">
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/12.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>8 °C</p>
+          </div>
+        </div>
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/12.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>8 °C</p>
+          </div>
+        </div>
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/18.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>8 °C</p>
+          </div>
+        </div>
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/35.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>8 °C</p>
+          </div>
+        </div>
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/33.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>8 °C</p>
+          </div>
+        </div>
+        <div class="day">
+          <h6>SAT</h6>
+          <img src="assets/cloud/22.png" alt="" />
+          <div class="maxMin">
+            <span>max</span>
+            <p>19 °C</p>
+            <span>min</span>
+            <p>718 °C</p>
+          </div>
+        </div>
+        <img class="cloud" src="assets/star/38.png" alt="" />
+      </div>
+    </div>
   </div>
 </div>
