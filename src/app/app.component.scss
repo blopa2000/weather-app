@@ -21,49 +21,24 @@ svg {
   transform: translateY(0px);
 }
 
-@for $i from 1 through 4 {
-  .wave__sun#{$i} {
-    animation: wave-sun 2s ease-in-out;
-    animation-delay: #{'0.'}#{$i}s;;
-  }
-
-  .wave__moon#{$i} {
-    animation: wave-moon 2s  ease-in-out;
-    animation-delay:  #{'0.'}#{$i}s;
+@for $i from 1 through 8 {
+  .wave__movement#{$i} {
+    animation: wave-sun 8s infinite ease-in-out;
+    animation-delay: #{'0.'}#{$i}s;
   }
 }
 
-@keyframes wave-moon {
-  0% {
-    transform: translateY(0px);
-  }
-  30% {
-    transform: translateY(-50px);
-  }
-
-  70% {
-    transform: translateY(50px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
 
 @keyframes wave-sun {
   0% {
-    transform: translateY(0px);
-  }
-
-  30% {
     transform: translateY(-50px);
   }
 
-  70% {
+  50% {
     transform: translateY(50px);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(-50px);
   }
 }

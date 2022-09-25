@@ -1,59 +1,133 @@
 <div class="container">
   <div class="card">
     <div class="card__search">
-      <div class="card__search__input">
-        <input type="text" placeholder="Country or city" />
+      <div
+        class="card__search__input"
+        [ngStyle]="{
+          border: weather.isSun ? '1px solid #F9E65C' : '1px solid #0090f8'
+        }"
+      >
+        <input
+          type="text"
+          placeholder="Search cities"
+          [ngStyle]="{
+            caretColor: weather.isSun ? '#F9E65C' : '#0090f8'
+          }"
+          [(ngModel)]="input"
+          (keydown.enter)="send()"
+        />
       </div>
-      <button class="card__search__btn">
+      <button
+        class="card__search__btn"
+        [ngStyle]="{
+          background: weather.isSun
+            ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+            : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+        }"
+        (click)="send()"
+      >
         <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
       </button>
     </div>
     <div class="card__infoWeather">
       <img
         class="card__infoWeather__img"
-        src="assets/cloud/5.png"
-        alt="clouds"
+        src="assets{{ icons[weather.icon]?.img || '/cloud/5' }}.png"
+        [ngStyle]="{
+          filter: icons[weather.icon]?.light.replace('8px', '30px')
+        }"
+        [alt]="icons[weather.icon]?.img"
       />
-      <button class="card__infoWeather__btn">°F</button>
-      <h1 class="card__infoWeather__title">19°C</h1>
-      <p class="card__infoWeather__sup">Feels like 32 °C</p>
-      <h2 class="card__infoWeather__type">Broken clouds</h2>
+      <button
+        class="card__infoWeather__btn"
+        [ngStyle]="{
+          background: weather.isSun
+            ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+            : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+        }"
+        (click)="farenheit = !farenheit"
+      >
+        {{ farenheit ? "°C" : "°F" }}
+      </button>
+      <h1 class="card__infoWeather__title">
+        {{ temperatureForC(weather.temp) }}
+      </h1>
+      <p class="card__infoWeather__sup">
+        Feels like {{ temperatureForC(weather.feelsLike) }}
+      </p>
+      <h2 class="card__infoWeather__type">{{ weather.description }}</h2>
       <div class="card__infoWeather__main">
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faDroplet"></fa-icon>
           <p>Humidity</p>
-          <span>90°C</span>
+          <span>{{ weather.humidity }}%</span>
         </div>
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faWind"></fa-icon>
           <p>Wind</p>
-          <span>11 km/h</span>
+          <span>{{ weather.wind }} km/h</span>
         </div>
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faChevronUp"></fa-icon>
           <p>High</p>
-          <span>19 °C</span>
+          <span>{{ temperatureForC(weather.tempMax) }} </span>
         </div>
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faEye"></fa-icon>
-          <p>Visibilidad</p>
-          <span>10 km</span>
+          <p>visibility</p>
+          <span>{{ weather.visibility }} km</span>
         </div>
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faArrowsDownToLine"></fa-icon>
-          <p>Presuure</p>
-          <span>100 mbar</span>
+          <p>Pressure</p>
+          <span>{{ weather.pressure }} mbar</span>
         </div>
-        <div class="internal__card">
-          <!-- ICON -->
+        <div
+          class="internal__card"
+          [ngStyle]="{
+            background: weather.isSun
+              ? 'linear-gradient(301deg, #FF912C, #F9E65C)'
+              : 'linear-gradient(301deg, #0090f8, #00d6e3)'
+          }"
+        >
           <fa-icon [icon]="faChevronDown"></fa-icon>
           <p>Low</p>
-          <span>15 °C</span>
+          <span>{{ temperatureForC(weather.tempMin) }} </span>
         </div>
       </div>
     </div>
@@ -61,94 +135,54 @@
       <div class="card__country">
         <div class="card__country__info">
           <div class="card__country__info__main">
-            <h6>Rionegro</h6>
-            <p class="sup">Tiempo Actual</p>
-            <p class="date">16 sep,friday 10:18 PM</p>
+            <h6>{{ weather.name }}</h6>
+            <p class="sup">Current time</p>
+            <p class="date">{{ weather.date | date: "medium" }}</p>
           </div>
 
           <div class="card__country__info__sunrise-sunset">
             <div class="info">
-              <p>05:51 AM</p>
+              <p>{{ weather.sunrise | date: "shortTime" }}</p>
               <span>Sunrise</span>
             </div>
             <div class="info">
-              <p>06:00 PM</p>
+              <p>{{ weather.sunset | date: "shortTime" }}</p>
               <span>Sunset</span>
             </div>
             <div class="info">
-              <p>75 %</p>
+              <p>{{ weather.clouds }} %</p>
               <span>Clouds</span>
             </div>
           </div>
         </div>
 
         <div class="card__country__flag">
-          <p class="code">CO</p>
-          <img src="assets/co.png" alt="" />
+          <p class="code">{{ weather.country | uppercase }}</p>
+          <img
+            src="https://flagcdn.com/w320/{{ weather?.country || 'co' }}.png"
+            alt=""
+          />
         </div>
       </div>
       <!-- week -->
       <div class="dayweek">
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/12.png" alt="" />
+        <div class="day" *ngFor="let day of weatherWeek">
+          <h6>{{ day.title }}</h6>
+          <img
+            src="assets{{ icons[day.icon]?.img || '/cloud/5' }}.png"
+            [ngStyle]="{
+              filter: icons[day.icon]?.light
+            }"
+            [alt]="icons[day.icon]?.img"
+          />
           <div class="maxMin">
             <span>max</span>
-            <p>19 °C</p>
+            <p>{{ temperatureForC(day.tempMax) }}</p>
             <span>min</span>
-            <p>8 °C</p>
+            <p>{{ temperatureForC(day.tempMin) }}</p>
           </div>
         </div>
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/12.png" alt="" />
-          <div class="maxMin">
-            <span>max</span>
-            <p>19 °C</p>
-            <span>min</span>
-            <p>8 °C</p>
-          </div>
-        </div>
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/18.png" alt="" />
-          <div class="maxMin">
-            <span>max</span>
-            <p>19 °C</p>
-            <span>min</span>
-            <p>8 °C</p>
-          </div>
-        </div>
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/35.png" alt="" />
-          <div class="maxMin">
-            <span>max</span>
-            <p>19 °C</p>
-            <span>min</span>
-            <p>8 °C</p>
-          </div>
-        </div>
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/33.png" alt="" />
-          <div class="maxMin">
-            <span>max</span>
-            <p>19 °C</p>
-            <span>min</span>
-            <p>8 °C</p>
-          </div>
-        </div>
-        <div class="day">
-          <h6>SAT</h6>
-          <img src="assets/cloud/22.png" alt="" />
-          <div class="maxMin">
-            <span>max</span>
-            <p>19 °C</p>
-            <span>min</span>
-            <p>718 °C</p>
-          </div>
-        </div>
+
         <img class="cloud" src="assets/star/38.png" alt="" />
       </div>
     </div>
