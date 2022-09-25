@@ -10,6 +10,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^14.2.3",
+    "@angular-devkit/schematics": "^14.2.3",
     "@angular/animations": "~13.3.0",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
@@ -23,6 +25,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@schematics/angular": "^14.2.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -31,6 +34,7 @@
     "@angular-devkit/build-angular": "~13.3.7",
     "@angular/cli": "~13.3.7",
     "@angular/compiler-cli": "~13.3.0",
+    "@nativescript/schematics": "^11.2.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
