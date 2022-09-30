@@ -120,10 +120,6 @@ export class CardWeatherComponent {
     this.input = '';
   }
 
-  temperatureChange(): string {
-    return this.farenheit ? '°F' : '°C';
-  }
-
   temperatureForC(temp: number): string {
     if (this.farenheit) {
       return Math.round((temp * 9) / 5 + 32) + '°F';

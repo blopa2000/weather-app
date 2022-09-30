@@ -76,11 +76,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private getServiceWeatherWithLocation(location: Coord) {
+  getServiceWeatherWithLocation(location: Coord) {
     this.apiService
       .getWeatherWithLocation(location)
       .subscribe((data: ResWeather) => {
-        this.fillData(data);
+        this.getServiceWeather(data.name);
       });
   }
 

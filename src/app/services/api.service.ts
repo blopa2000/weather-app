@@ -23,15 +23,15 @@ export class ApiService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === HttpStatusCode.InternalServerError) {
-            return throwError('algo esta fallando en el servidor');
+            return throwError(() => 'algo esta fallando en el servidor');
           }
           if (error.status === HttpStatusCode.NotFound) {
-            return throwError('no se encontro el producto');
+            return throwError(() => 'no se encontro el producto');
           }
           if (error.status === HttpStatusCode.Unauthorized) {
-            return throwError('no tiene permisos para ver el producto');
+            return throwError(() => 'no tiene permisos para ver el producto');
           }
-          return throwError(' algo esta fallando en el servidor');
+          return throwError(() => 'algo esta fallando en el servidor');
         })
       );
   }
@@ -45,15 +45,15 @@ export class ApiService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === HttpStatusCode.InternalServerError) {
-            return throwError('algo esta fallando en el servidor');
+            return throwError(() => 'algo esta fallando en el servidor');
           }
           if (error.status === HttpStatusCode.NotFound) {
-            return throwError('no se encontro el producto');
+            return throwError(() => 'no se encontro el producto');
           }
           if (error.status === HttpStatusCode.Unauthorized) {
-            return throwError('no tiene permisos para ver el producto');
+            return throwError(() => 'no tiene permisos para ver el producto');
           }
-          return throwError(' algo esta fallando en el servidor');
+          return throwError(() => 'algo esta fallando en el servidor');
         })
       );
   }

@@ -49,6 +49,7 @@ export interface Wind {
 
 export interface Rain {
   '1h': number;
+  '3h'?: number;
 }
 
 export interface Clouds {
@@ -61,6 +62,7 @@ export interface Sys {
   country: string;
   sunrise: number;
   sunset: number;
+  pod?: string;
 }
 
 export interface ResWeather {
@@ -76,7 +78,7 @@ export interface ResWeather {
   sys: Sys;
   timezone?: number;
   id?: number;
-  name?: string;
+  name: string;
   cod?: number;
 }
 
@@ -109,12 +111,18 @@ export interface Wind {
   gust: number;
 }
 
-export interface Rain {
+export interface RainWeek {
+  '1h'?: number;
   '3h': number;
 }
 
-export interface Sys {
-  pod: string;
+export interface SysWeek {
+  type?: number;
+  id?: number;
+  country?: string;
+  sunrise?: number;
+  sunset?: number;
+  pod?: string;
 }
 
 export interface List {
@@ -125,8 +133,8 @@ export interface List {
   wind: Wind;
   visibility: number;
   pop: number;
-  rain: Rain;
-  sys: Sys;
+  rain?: RainWeek;
+  sys?: SysWeek;
   dt_txt: string;
 }
 
